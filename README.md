@@ -1,3 +1,5 @@
+[![Go](https://github.com/laurocaetano/foxtail/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/laurocaetano/foxtail/actions/workflows/go.yml)
+
 # foxtail
 Foxtail is a distributed KV database
 
