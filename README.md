@@ -37,6 +37,9 @@ overwritten.
 `GET(key)` where `key` is a `string`. It will return the `blob` associated with
 that given `key`, and in case the key does not exist, returns `nil`.
 
+`DELETE(key)` where `key` is a `string`. It will delete an existing key and its
+associated value. In case the `key` does not exist, returns `nil`.
+
 The actual
 constraints for the `key` and `value`, such as max length, allowed characters and
 etc, are yet to be defined.
