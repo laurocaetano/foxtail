@@ -18,7 +18,7 @@ and the first high level plan is as follows:
 1. Write down an extensive set of acceptance test for the new distributed KV setup
 1. Find out a way to implement durable storage, but still offer the in-memory option
 
-### Details of El Plan
+### Details of the El Plan
 
 This section will be updated as I start to make progress on the areas listed above.
 The goal is to build a complex system, but in an incremental fashion. So I expect to
