@@ -31,3 +31,28 @@ func TestInMemoryPut(t *testing.T) {
 	err = inMemory.Put(key, []byte{})
 	assert.EqualError(t, err, "The given value cannot be empty")
 }
+
+func TestInMemoryGet(t *testing.T) {
+	t.Parallel()
+
+	inMemory := NewInMemory()
+
+	// Empty key not allowed
+	val, err := inMemory.Get("")
+	assert.Nil(t, val)
+	assert.EqualError(t, err, "The given key cannot be empty")
+
+	// Valid key
+	key := "fox"
+	value := []byte("tail")
+	inMemory.Put(key, value)
+
+	ret, err := inMemory.Get(key)
+	assert.Nil(t, err)
+	assert.Equal(t, value, ret)
+
+	// Non existing key
+	ret, err = inMemory.Get("seal corp.")
+	assert.Nil(t, err)
+	assert.Nil(t, ret)
+}

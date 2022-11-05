@@ -32,3 +32,17 @@ func (memory *InMemory) Put(key string, value []byte) error {
 
 	return nil
 }
+
+func (memory *InMemory) Get(key string) ([]byte, error) {
+	if key == "" {
+		return nil, errors.New("The given key cannot be empty")
+	}
+
+	val, exists := memory.backend[key]
+
+	if !exists {
+		return nil, nil
+	}
+
+	return val, nil
+}
