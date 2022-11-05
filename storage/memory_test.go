@@ -56,3 +56,26 @@ func TestInMemoryGet(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Nil(t, ret)
 }
+
+func TestInMemoryDelete(t *testing.T) {
+	t.Parallel()
+
+	inMemory := NewInMemory()
+
+	// Deleting non existing key is no-op
+	err := inMemory.Delete("invisible fox")
+	assert.Nil(t, err)
+
+	key := "a key"
+	value := []byte("my value")
+	// Insert a key first
+	inMemory.Put(key, value)
+
+	// When deleting the key
+	inMemory.Delete(key)
+
+	// It should not be available anymore
+	val, err := inMemory.Get(key)
+	assert.Nil(t, err)
+	assert.Nil(t, val)
+}

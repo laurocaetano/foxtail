@@ -46,3 +46,15 @@ func (memory *InMemory) Get(key string) ([]byte, error) {
 
 	return val, nil
 }
+
+func (memory *InMemory) Delete(key string) error {
+	if key == "" {
+		return errors.New("The given key cannot be empty")
+	}
+
+	delete(memory.backend, key)
+
+	// So far since deleting from a map is a no-op, no error
+	// is ever returned
+	return nil
+}
