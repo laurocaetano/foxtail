@@ -1,8 +1,11 @@
 module github.com/laurocaetano/foxtail
 
-go 1.19
+go 1.21
 
-require github.com/stretchr/testify v1.8.1
+require (
+	github.com/orcaman/concurrent-map/v2 v2.0.1
+	github.com/stretchr/testify v1.8.1
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
