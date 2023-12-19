@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package foxtail.v1;
+
+option go_package = "v1/foxtailservice";
+
+// gRPC service that interfaces with the core
+// Key-Value database logic.
+service FoxtailService {
+  // Puts a new key to the backend.
+  // Returns more information if the operation was
+  // successfully executed.
+  rpc Put(PutRequest) returns(PutResponse) {}
+}
+
+message PutRequest {
+  // The key of the object
+  string key = 1;
+  // The value to be stored paired with the given key
+  bytes value = 2;
+}
+
+// Response for putting a new key to the storage.
+// In case the request is succesfully processed by
+// the backend storage, it returns `status = OK`,
+// otherwise it returns `status = ERROR` and a description
+// of the error as a string.
+message PutResponse {
+  // The status if the operation was successfull
+  ResponseStatus status = 1;
+  // In case of errors, an optional error description
+  // might be available.
+  optional string error_description = 2;
+}
+
+enum ResponseStatus {
+  RESPONSE_STATUS_UNSPECIFIED = 0;
+  RESPONSE_STATUS_OK = 1;
+  RESPONSE_STATUS_ERROR = 2;
+}
